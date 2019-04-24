@@ -7,16 +7,29 @@ import { FormControl } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { Routes, RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MetricsComponent } from './metrics/metrics.component';
+import { MetricsModule } from './metrics/metrics.module';
+
+const routes: Routes = [
+  {path: '', redirectTo: 'template', pathMatch: 'full'},
+  {path: 'template', component: MainBoardComponent},
+  {path: 'metrics', component: MetricsComponent}
+]
+
 @NgModule({
   declarations: [
   AppComponent,
   MainBoardComponent,
+  MetricsComponent,
 
   ],
   imports: [ 
   BrowserModule,
   FormsModule,
-  ReactiveFormsModule
+  ReactiveFormsModule,
+  RouterModule.forRoot(routes),
+  AppRoutingModule,
+  MetricsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
